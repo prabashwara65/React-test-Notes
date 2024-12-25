@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Signup = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/register",
+        { name, email, password }
+      );
+      console.log(error)
+    } catch (error){
+        console.log(error)
+    }
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-green-100">
       <div className="border shadow p-6 w-80 bg-white">
         <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="name" className="block text-gray-600">
               Name
             </label>
             <input
               type="text"
+              onSubmit={(e) => setName(e.target.value)}
               className="w-full px-3 py-2 border"
               placeholder="Enter Name"
             />
@@ -22,6 +40,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
+              onSubmit={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 border"
               placeholder="Enter Email"
             />
@@ -32,6 +51,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
+              onSubmit={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 border"
               placeholder="******"
             />
