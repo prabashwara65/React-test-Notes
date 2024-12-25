@@ -2,23 +2,48 @@ import React from "react";
 
 const Signup = () => {
   return (
-    <div className="flex justify-center items-center">
-      <div>
-        <h2>Sign Up</h2>
+    <div className="flex justify-center items-center min-h-screen bg-green-100">
+      <div className="border shadow p-6 w-80 bg-white">
+        <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
         <form>
-          <div>
-            <label htmlFor="name">Name</label>
-            <input type="text" placeholder="Enter Name" />
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-gray-600">
+              Name
+            </label>
+            <input
+              type="text"
+              className="w-full px-3 py-2 border"
+              placeholder="Enter Name"
+            />
           </div>
-          <div>
-            <label htmlFor="email">Email</label>
-            <input type="text" placeholder="Enter Email" />
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-600">
+              Email
+            </label>
+            <input
+              type="text"
+              className="w-full px-3 py-2 border"
+              placeholder="Enter Email"
+            />
           </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <input type="text" placeholder="******" />
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-gray-600">
+              Password
+            </label>
+            <input
+              type="text"
+              className="w-full px-3 py-2 border"
+              placeholder="******"
+            />
           </div>
-          <button>Sign Up</button>
+          <div className="my-4 ">
+            <button className="w-full bg-teal-600 text-white py-2">
+              Sign Up
+            </button>
+            <p>
+              Already have an account? <a href="#">Login</a>
+            </p>
+          </div>
         </form>
       </div>
     </div>
