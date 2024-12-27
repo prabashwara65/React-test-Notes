@@ -6,6 +6,7 @@ import connectToDatabase from "./Database/Database.js";
 
 const app = express();
 app.use(cors());
+app.use(express.json)
 app.use("/api/auth/", authRouter);
 
 app.listen(5000, () => {

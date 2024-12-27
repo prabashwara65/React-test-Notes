@@ -13,10 +13,10 @@ const Signup = () => {
         "http://localhost:5000/api/auth/register",
         { name, email, password }
       );
-      console.log(response)
-      console.log(error)
+      console.log(response.data)
+
     } catch (error){
-        console.log(error)
+        console.error("Error occurred during registration:", error);
     }
   };
 
@@ -31,7 +31,8 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              onSubmit={(e) => setName(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="w-full px-3 py-2 border"
               placeholder="Enter Name"
             />
@@ -42,7 +43,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              onSubmit={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 border"
               placeholder="Enter Email"
             />
@@ -53,7 +54,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              onSubmit={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 border"
               placeholder="******"
             />

@@ -5,11 +5,13 @@ import userRegistrationModel from "../models/UserRegistration.js";
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
+    
   try {
-    const User = ({ name, email, password } = req.body);
-    const userRegistrationModel = await User.findOne({ email });
+    console.log("Request Body:", req.body);
+    const  { name, email, password } = req.body;
+    const user = await userRegistrationModel.findOne({ email });
 
-    if (userRegistrationModel) {
+    if (user) {
       return res
         .status(401)
         .json({ success: false, message: "User is already exits " });
