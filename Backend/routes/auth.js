@@ -1,20 +1,21 @@
 import express, { Router } from 'express'
+import userRegistrationMode from '../models/UserRegistration'
 
-const route = exprss();
+const route = express();
 
 route.post('/register' , async (req , res ) => {
     try{
         const  User = {name , email , password } = req.body ;
-        const user = await User.findOne({email})
+        const userRegistrationMode = await User.findOne({email})
         
-        if(user){
+        if(userRegistrationMode){
             return res.status(401).json({success : false , message : "User is already exits "})
 
         }
 
         const hashPassword = await bcrypt.hash(password , 10)
 
-        const newuser  = new user ({ name , email , password : hashPassword})
+        const newuser  = new userRegistrationMode ({ name , email , password : hashPassword})
 
         await newuser.save()
 
