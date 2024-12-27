@@ -1,31 +1,39 @@
-import express, { Router } from 'express'
-import userRegistrationMode from '../models/UserRegistration'
+import express from "express";
+import bcrypt from "bcrypt";
+import userRegistrationModel from "../models/UserRegistration.js";
 
-const route = express();
+const router = express.Router();
 
-route.post('/register' , async (req , res ) => {
-    try{
-        const  User = {name , email , password } = req.body ;
-        const userRegistrationMode = await User.findOne({email})
-        
-        if(userRegistrationMode){
-            return res.status(401).json({success : false , message : "User is already exits "})
+router.post("/register", async (req, res) => {
+  try {
+    const User = ({ name, email, password } = req.body);
+    const userRegistrationModel = await User.findOne({ email });
 
-        }
-
-        const hashPassword = await bcrypt.hash(password , 10)
-
-        const newuser  = new userRegistrationMode ({ name , email , password : hashPassword})
-
-        await newuser.save()
-
-        return res.status(200).json({success : true , message : " User added successfully"})
-        
-    } catch (error){
-        console.log(error)
-        return res.status(500).json({success : false , message : 'error adding user ' + error})
-       
+    if (userRegistrationModel) {
+      return res
+        .status(401)
+        .json({ success: false, message: "User is already exits " });
     }
-}) 
 
-export default Router;
+    const hashPassword = await bcrypt.hash(password, 10);
+
+    const newuser = new userRegistrationModel({
+      name,
+      email,
+      password: hashPassword,
+    });
+
+    await newuser.save();
+
+    return res
+      .status(200)
+      .json({ success: true, message: " User added successfully" });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ success: false, message: "error adding user " + error });
+  }
+});
+
+export default router;
