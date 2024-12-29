@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -13,10 +13,9 @@ const Signup = () => {
         "http://localhost:5000/api/auth/register",
         { name, email, password }
       );
-      console.log(response.data)
-
-    } catch (error){
-        console.error("Error occurred during registration:", error);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error occurred during registration:", error);
     }
   };
 
