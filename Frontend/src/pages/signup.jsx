@@ -9,13 +9,12 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        { name, email, password }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error occurred during registration:", error);
+      const response =  await axios.post('http://localhost:8080/auth/register',
+        {name , email, password}
+      )
+      console.log(response.data)
+    }catch (error){
+      console.log(error)
     }
   };
 
@@ -42,6 +41,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 border"
               placeholder="Enter Email"
@@ -53,13 +53,14 @@ const Signup = () => {
             </label>
             <input
               type="text"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 border"
               placeholder="******"
             />
           </div>
           <div className="my-4 ">
-            <button className="w-full bg-teal-600 text-white py-2">
+            <button type="submit" className="w-full bg-teal-600 text-white py-2">
               Sign Up
             </button>
             <p>
