@@ -37,4 +37,8 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
+
+router.get('/login' , (req , res))
+
 export default router;
