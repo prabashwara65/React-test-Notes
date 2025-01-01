@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,6 +15,9 @@ const Signup = () => {
         {name , email, password}
       )
       console.log(response.data)
+      if(response.data.success){
+        navigate('/login')
+      }
     }catch (error){
       console.log(error)
     }
@@ -64,7 +69,7 @@ const Signup = () => {
               Sign Up
             </button>
             <p>
-              Already have an account? <a href="#">Login</a>
+              Already have an account? <Link to='/login' className="text-blue-500 underline">Login</Link>
             </p>
           </div>
         </form>
