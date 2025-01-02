@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/ContextProvider";
 
 const Login = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/auth/login', {
+      const response = await axios.post("http://localhost:8080/auth/login", {
         email,
         password,
       });
-      console.log(response);
-      if(response.data.success){
-        localStorage.setItem('token' , response.data.token )
-        navigate("/")
+      console.log(response.data);
+      if (response.data.success) {
+        login(response.data.user);
+        localStorage.setItem("token", response.data.token);
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -59,7 +62,13 @@ const Login = () => {
             <button className="w-full bg-red-500 text-white py-2" type="submit">
               Login
             </button>
-            <p> Don't Have any Account? <Link to='/signup' className="text-blue-600 underline">Register</Link></p>
+            <p>
+              {" "}
+              Don't Have any Account?{" "}
+              <Link to="/signup" className="text-blue-600 underline">
+                Register
+              </Link>
+            </p>
           </div>
         </form>
       </div>
