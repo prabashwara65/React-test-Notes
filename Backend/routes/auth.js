@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import userRegistrationModel from "../models/UserRegistration.js";
+import jwt from 'jsonwebtoken'
 
 const router = express.Router();
 
@@ -36,13 +37,13 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await user.findOne({ email });
+    const user = await userRegistrationModel.findOne({ email });
 
     if (!user) {
-      return res.json(401).json({ success: false, message: "User not found" });
+      return res.status(401).json({ success: false, message: "User not found" });
     }
 
     const checkpassword = await bcrypt.compare(password, user.password);

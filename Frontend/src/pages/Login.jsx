@@ -9,19 +9,18 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await axios.get("http://localhost:8080/auth/login", {
+      const response = await axios.post('http://localhost:8080/auth/login', {
         email,
         password,
       });
       console.log(response);
       if(response.data.succcess){
         localStorage.setItem('token' , response.data.token )
-        navigate('/')
+        navigate("/")
       }
     } catch (error) {
-      console.log(response.error);
+      console.log(error);
     }
   };
 
