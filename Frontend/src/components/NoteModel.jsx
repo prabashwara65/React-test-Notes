@@ -1,4 +1,19 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await axios.post("http://localhost:8080/note/add", {
+      title,
+      description,
+    });
+    if (response.data.success) Navigate("/");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const NoteModel = () => {
   const [title, setTitle] = useState("");
@@ -7,7 +22,7 @@ const NoteModel = () => {
     <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
       <div className="bg-white p-8 rounded">
         <h2 className="text-xl font-bold mb-4">Add New Note</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             value={title}
@@ -24,7 +39,10 @@ const NoteModel = () => {
             onChange={(e) => e.target.value(setDescription)}
           />
 
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded"
+          >
             Add Note
           </button>
         </form>
