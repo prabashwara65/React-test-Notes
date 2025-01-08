@@ -16,6 +16,7 @@ const handleSubmit = async (e) => {
 };
 
 const NoteModel = () => {
+    //This model is used for toggle frame switching 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   return (
