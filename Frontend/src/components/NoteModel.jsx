@@ -9,17 +9,20 @@ const handleSubmit = async (e) => {
       title,
       description,
     });
-    if (response.data.success) Navigate("/");
+    if (response.data.success){
+        Navigate("/")
+        closeModel() 
+    };
   } catch (error) {
     console.log(error);
   }
 };
 
-const NoteModel = () => {
-    //This model is used for toggle frame switching 
-    //Trigger this function we use handleSubmit
-    //This model is used for toggle frame switching 
-    //Trigger this function we use handleSubmit
+const NoteModel = ({ closeModel }) => {
+  //This model is used for toggle frame switching
+  //Trigger this function we use handleSubmit
+  //This model is used for toggle frame switching
+  //Trigger this function we use handleSubmit
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   return (
@@ -50,7 +53,7 @@ const NoteModel = () => {
             Add Note
           </button>
         </form>
-        <button className="mt-4 text-red-500">Cancel</button>
+        <button className="mt-4 text-red-500" onClick={closeModel}>Cancel</button>
       </div>
     </div>
   );
