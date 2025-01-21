@@ -1,9 +1,10 @@
 import express from 'express'
 import Note from '../models/Note'
+import middleware from '../middleware/middleware';
 
 const router = express.Router()
 
-router.post('/add' , async (req , res) => {
+router.post('/add' , middleware , async (req , res) => {
 
     try{
 
