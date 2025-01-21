@@ -23,13 +23,16 @@ const middleware = async (req , res , next) => {
             return res.status(404).json({success: falst , message: "User Din't Find"})
         }
 
-        const newUser = {name: User.name}
+        const newUser = {name: User.name , id: User._id}
 
         req.User = newUser
 
+        //continue and execute add new note function 
         next();
 
     }catch(error){
+
+        return res.status(500).json({success: falst , message: "Please Log in"})
 
     }
 }

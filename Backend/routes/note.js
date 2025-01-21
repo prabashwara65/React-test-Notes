@@ -13,11 +13,16 @@ router.post('/add' , middleware , async (req , res) => {
         const newNote = new Note ({
             title,
             description,
+            userId: req.user.id,
         })
 
+        await newNote.save();
+
+        return res(200).json({success: true , message: "account created successfully"});
 
     }catch(error){
-
+        console.log("not success Account")
+        return res(200).json({success: true , message: "account created Not successfully"});
     }
 
 })
