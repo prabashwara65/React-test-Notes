@@ -1,5 +1,5 @@
-import express from 'express'
-import Note from '../models/Note'
+import express from 'express';
+import Note from '../models/Note';
 import middleware from '../middleware/middleware';
 
 const router = express.Router()
@@ -22,7 +22,7 @@ router.post('/add' , middleware , async (req , res) => {
 
     }catch(error){
         console.log("not success Account")
-        return res(200).json({success: true , message: "account created Not successfully"});
+        return res(500).json({success: false , message: "account created Not successfully"});
     }
 
 })
