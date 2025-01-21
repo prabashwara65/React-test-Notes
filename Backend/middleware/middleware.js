@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 import User from "../models/UserRegistration";
-import User from "../models/UserRegistration";
 
 const middleware = async (req , res , next) => {
     try{

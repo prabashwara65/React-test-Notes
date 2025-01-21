@@ -1,5 +1,5 @@
 import express from 'express';
-import Note from '../models/Note';
+import Note from '../models/Note.js';
 import middleware from '../middleware/middleware';
 
 const router = express.Router()
@@ -13,7 +13,7 @@ router.post('/add' , middleware , async (req , res) => {
         const newNote = new Note ({
             title,
             description,
-            userId: req.user.id,
+            userID: req.user.id,
         })
 
         await newNote.save();
