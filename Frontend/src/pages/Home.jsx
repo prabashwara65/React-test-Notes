@@ -9,6 +9,8 @@ const Home = () => {
     setModelOpen(false);
   };
   return (
+
+    
     <div className="bg-gray-600 min-h-screen">
       <Navbar />
       <button

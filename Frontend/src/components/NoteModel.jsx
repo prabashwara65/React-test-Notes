@@ -9,6 +9,7 @@ const handleSubmit = async (e) => {
       title,
       description,
       
+      
     },{
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
