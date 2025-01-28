@@ -8,8 +8,9 @@ const handleSubmit = async (e) => {
     const response = await axios.post("http://localhost:8080/note/add", {
       title,
       description,
+      //show input fields to get as respond 
       
-      
+
     },{
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
