@@ -13,6 +13,7 @@ const handleSubmit = async (e) => {
 
     },{
       headers: {
+        //adding token for headers 
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     });
