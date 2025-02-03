@@ -8,9 +8,7 @@ const handleSubmit = async (e) => {
     const response = await axios.post("http://localhost:8080/note/add", {
       title,
       description,
-      //show input fields to get as respond 
       
-
     },{
       headers: {
         //adding token for headers 
@@ -40,18 +38,18 @@ const NoteModel = ({ closeModel }) => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            value={title}
             placeholder="Note Title"
             className="border p-2 w-full mb-4"
-            onChange={(e) => e.target.value(setTitle)}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
 
           <textarea
-            // type="text"
+           type="text"
             value={description}
             placeholder="Note Description"
             className="border p-2 w-full mb-4"
-            onChange={(e) => e.target.value(setDescription)}
+            onChange={(e) => setDescription(e.target.value)}
           />
 
           <button

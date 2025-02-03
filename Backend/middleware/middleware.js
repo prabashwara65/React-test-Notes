@@ -19,7 +19,7 @@ const middleware = async (req , res , next) => {
 
         if(!User){
 
-            return res.status(404).json({success: falst , message: "User Din't Find"})
+            return res.status(404).json({success: falst , message: "User Didn't Find"})
         }
 
         const newUser = {name: User.name , id: User._id}
