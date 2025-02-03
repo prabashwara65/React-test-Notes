@@ -1,6 +1,6 @@
 import express from 'express';
 import Note from '../models/Note.js';
-import middleware from '../middleware/middleware';
+import middleware from '../middleware/middleware.js';
 
 const router = express.Router()
 
