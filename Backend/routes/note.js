@@ -7,9 +7,7 @@ const router = express.Router()
 router.post('/add' , middleware , async (req , res) => {
 
     try{
-
         const { title , description } = req.body;
-
         const newNote = new Note ({
             title,
             description,
