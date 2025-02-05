@@ -16,6 +16,7 @@ const handleSubmit = async (e) => {
       }
     });
     if (response.data.success){
+      //if res data is suc go to home
         Navigate("/")
         closeModel() 
     };
