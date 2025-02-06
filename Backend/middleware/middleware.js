@@ -9,7 +9,7 @@ const middleware = async (req , res , next) => {
             return res.status(401).json({success: false , message: "unAuthorization"})
         }
 
-        const decoded = jwt.verify(token, JWTKEY);
+        const decoded = jwt.verify(token, 'JWTKEY');
 
         if(!decoded){
             return res.status(401).json({success: false , message: "wrong token"})
