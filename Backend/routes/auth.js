@@ -46,8 +46,10 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ success: false, message: "User not found" });
     }
 
+     //decrypt password using bcrypt 
     const checkpassword = await bcrypt.compare(password, user.password);
 
+    //checks if password is correct
     if (!checkpassword) {
       return res
         .status(401)
